@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pixel Playground — eight tiny browser games — uxp70</title>
+<meta name="description" content="Pixel Playground is eight small arcade games in plain HTML, CSS and JavaScript: Snake, 2048, Breakout, Pong, Memory Match, Simon, Minesweeper and a reaction test.">
+<meta name="theme-color" content="#070809">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Pixel Playground — uxp70">
+<meta property="og:description" content="Eight tiny arcade games with no framework, no build step and no network calls after load.">
+<meta property="og:url" content="https://uxp70.github.io/p/pixel-playground/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/styles.css">
+<link rel="stylesheet" href="/p/project.css">
+</head>
+<body class="proj proj--pixel">
+<a class="skip" href="#main">Skip to the content</a>
+
+<header class="site-head">
+  <div class="wrap site-head__inner">
+    <a class="logo" href="/" aria-label="uxp70, home">uxp70<span class="logo__cursor" aria-hidden="true"></span></a>
+    <nav class="nav" aria-label="Main">
+      <a href="/">All projects</a>
+      <a href="https://uxp70.github.io/pixel-playground/">Play <span aria-hidden="true">↗</span></a>
+      <a class="nav__ext" href="https://github.com/uxp70/pixel-playground">Source <span aria-hidden="true">↗</span></a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="p-hero">
+    <div class="wrap">
+      <a class="p-back" href="/"><span aria-hidden="true">←</span> All projects</a>
+      <p class="p-kicker">02 · Game · Playable</p>
+      <h1 class="p-title">Pixel Playground</h1>
+      <p class="p-lede">Eight tiny arcade games with no framework, no build step and no network calls after the page loads. Each one keeps a single personal record on the device you play it on.</p>
+      <div class="p-actions">
+        <a class="btn btn--primary" href="https://uxp70.github.io/pixel-playground/">Open the arcade <span aria-hidden="true">↗</span></a>
+        <a class="btn" href="https://github.com/uxp70/pixel-playground">Read the source</a>
+      </div>
+      <dl class="p-meta">
+        <div><dt>Kind</dt><dd>Arcade of 8 games</dd></div>
+        <div><dt>Built with</dt><dd>HTML · CSS · Canvas</dd></div>
+        <div><dt>Build step</dt><dd>None</dd></div>
+        <div><dt>Records</dt><dd>localStorage</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="p-section">
+    <div class="wrap p-grid">
+      <div class="p-side">
+        <span class="p-side__num">01</span>
+        <h2>Eight games, one record each</h2>
+        <p class="p-side__note">Small enough to read in an afternoon, different enough that the toolkit gets tested in eight directions.</p>
+      </div>
+      <div class="p-body">
+        <dl class="p-rows">
+          <div><dt>Snake</dt><dd>Neon snake on a 20×20 grid, speeding up as you eat. Keeps the highest score.</dd></div>
+          <div><dt>2048</dt><dd>Slide-and-merge puzzle on a 4×4 board. Highest score.</dd></div>
+          <div><dt>Breakout</dt><dd>Paddle, ball, 40 bricks, three lives. Highest score.</dd></div>
+          <div><dt>Pong</dt><dd>First to seven against the computer. Longest rally.</dd></div>
+          <div><dt>Memory Match</dt><dd>Eight emoji pairs, scored by fewest moves.</dd></div>
+          <div><dt>Simon</dt><dd>Repeat a growing colour-and-tone sequence. Most rounds cleared.</dd></div>
+          <div><dt>Minesweeper</dt><dd>9×9, ten mines, and the first tap is always safe. Fastest clear.</dd></div>
+          <div><dt>Reaction Test</dt><dd>Five rounds, averaged in milliseconds. Best average.</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section class="p-section">
+    <div class="wrap p-grid">
+      <div class="p-side">
+        <span class="p-side__num">02</span>
+        <h2>Built for thumbs first</h2>
+        <p class="p-side__note">Touch is the primary input here, not a port of a keyboard game.</p>
+      </div>
+      <div class="p-body">
+        <p>A swipe that scrolls the page mid-run is a bug, and so is a long-press callout appearing while you drag a paddle. The fixes are unglamorous and they are the difference between a game that works on a phone and one that merely loads on it.</p>
+        <ul class="p-list">
+          <li><strong>Gesture ownership</strong> — <code>touch-action: none</code> on the board stops a swipe from scrolling, and <code>overscroll-behavior: none</code> kills pull-to-refresh mid-game.</li>
+          <li><strong>Per-game controls</strong>: an on-screen d-pad for Snake, swipe for Snake and 2048, drag for Breakout and Pong, long-press or flag mode for Minesweeper.</li>
+          <li><strong>Real fullscreen where it exists, a full-viewport layout where it does not</strong> — the ⛶ button or <kbd>F</kbd> uses the Fullscreen API, and falls back to a viewport layout on iPhone, where element fullscreen is unsupported. <kbd>Esc</kbd> or the floating ✕ exits.</li>
+          <li><strong>Nothing is selectable</strong> on a play surface: text selection, long-press callouts and the context menu are all disabled.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="p-section">
+    <div class="wrap p-grid">
+      <div class="p-side">
+        <span class="p-side__num">03</span>
+        <h2>Nothing to build</h2>
+        <p class="p-side__note">Static files served straight from the repository root, with one shared toolkit behind all eight games.</p>
+      </div>
+      <div class="p-body">
+        <p>Every game is its own page plus one script. <code>common.js</code> supplies what they all need: score storage that knows whether higher or lower is better, a tiny synthesised sound kit, canvas fitting, directional-key and swipe helpers, and overlay show/hide. Personal bests stay in <code>localStorage</code>, on the device you play on, with no account and no server.</p>
+        <pre><code>python3 -m http.server 3000
+# then open http://localhost:3000</code></pre>
+        <p style="margin-top:1.2rem">Adding a game is three steps: copy a page, write a script against the <code>PP</code> helpers, and add a card to the hub with an accent colour and a record badge.</p>
+      </div>
+    </div>
+  </section>
+
+  <nav class="p-next wrap" aria-label="Project navigation">
+    <a class="p-next__back" href="/">&larr; Back to all projects</a>
+    <a class="p-next__link" href="/p/raw-file-website/"><span>Next</span> Raw File Website →</a>
+  </nav>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap site-foot__inner">
+    <p>© <span id="year">2026</span> uxp70 · Everything here is public on <a href="https://github.com/uxp70">GitHub</a>.</p>
+    <p class="site-foot__meta">Plain HTML, CSS and a little JS. No trackers.</p>
+  </div>
+</footer>
+<script>document.getElementById("year").textContent = String(new Date().getFullYear());</script>
+</body>
+</html>

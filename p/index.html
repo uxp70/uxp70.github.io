@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Project notes — uxp70</title>
+<meta name="description" content="Longer notes on every uxp70 project: what each one is, how it works, what it is built with, and where to play it or read the source.">
+<meta name="theme-color" content="#070809">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/styles.css">
+<link rel="stylesheet" href="/p/project.css">
+</head>
+<body class="proj">
+<a class="skip" href="#main">Skip to the content</a>
+
+<header class="site-head">
+  <div class="wrap site-head__inner">
+    <a class="logo" href="/" aria-label="uxp70, home">uxp70<span class="logo__cursor" aria-hidden="true"></span></a>
+    <nav class="nav" aria-label="Main">
+      <a href="/">Home</a>
+      <a href="/#projects">Projects</a>
+      <a class="nav__ext" href="https://github.com/uxp70">GitHub <span aria-hidden="true">↗</span></a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="p-hero">
+    <div class="wrap">
+      <a class="p-back" href="/"><span aria-hidden="true">←</span> All projects</a>
+      <p class="p-kicker">Project notes</p>
+      <h1 class="p-title">Every project, one page each.</h1>
+      <p class="p-lede">The home page gives each project a card. These pages go further: what the thing actually is, how the interesting parts work, what it is built with, and how to run or read it yourself.</p>
+    </div>
+  </section>
+
+  <section class="p-section">
+    <div class="wrap">
+      <ul class="p-index">
+        <li><a href="/p/slipstream/"><span class="p-index__num">01</span><span class="p-index__name">Slipstream</span><span class="p-index__note">A neon arena shooter where the Quake movement model is the design, and co-op is peer-to-peer.</span><span class="p-index__go" aria-hidden="true">→</span></a></li>
+        <li><a href="/p/pixel-playground/"><span class="p-index__num">02</span><span class="p-index__name">Pixel Playground</span><span class="p-index__note">Eight small arcade games in plain HTML, CSS and JavaScript, built for thumbs first.</span><span class="p-index__go" aria-hidden="true">→</span></a></li>
+        <li><a href="/p/raw-file-website/"><span class="p-index__num">03</span><span class="p-index__name">Raw File Website</span><span class="p-index__note">Raw file links out of static hosting, by committing uploads into your own repo through the GitHub API.</span><span class="p-index__go" aria-hidden="true">→</span></a></li>
+        <li><a href="/p/seusign/"><span class="p-index__num">04</span><span class="p-index__name">SEUsign</span><span class="p-index__note">An on-device iOS signer: sideload, patch and install apps without a computer.</span><span class="p-index__go" aria-hidden="true">→</span></a></li>
+        <li><a href="/p/zombsclone-io/"><span class="p-index__num">05</span><span class="p-index__name">ZombsClone.io</span><span class="p-index__note">A top-down battle royale in vanilla JS and Canvas, with bots offline and a real server online.</span><span class="p-index__go" aria-hidden="true">→</span></a></li>
+        <li><a href="/p/nebula-strike/"><span class="p-index__num">06</span><span class="p-index__name">Nebula Strike</span><span class="p-index__note">A polished neon shooter with local accounts, two leaderboards and MQTT squads.</span><span class="p-index__go" aria-hidden="true">→</span></a></li>
+        <li><a href="/p/ios-everything/"><span class="p-index__num">07</span><span class="p-index__name">iOSeverything</span><span class="p-index__note">A planned collection of iOS tooling — .ipa files, an app repository, bookmarklets. Readme first.</span><span class="p-index__go" aria-hidden="true">→</span></a></li>
+      </ul>
+    </div>
+  </section>
+
+  <nav class="p-next wrap" aria-label="Project navigation">
+    <a class="p-next__back" href="/">&larr; Back to all projects</a>
+    <a class="p-next__link" href="/p/slipstream/"><span>Start with</span> Slipstream →</a>
+  </nav>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap site-foot__inner">
+    <p>© <span id="year">2026</span> uxp70 · Everything here is public on <a href="https://github.com/uxp70">GitHub</a>.</p>
+    <p class="site-foot__meta">Plain HTML, CSS and a little JS. No trackers.</p>
+  </div>
+</footer>
+<script>document.getElementById("year").textContent = String(new Date().getFullYear());</script>
+</body>
+</html>

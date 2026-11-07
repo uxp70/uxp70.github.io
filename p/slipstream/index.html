@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Slipstream — a neon arena movement shooter — uxp70</title>
+<meta name="description" content="Slipstream is a browser-based 3D arena shooter built around Quake-style movement: air strafing, auto-bunnyhop, dashes and slides, four weapons, five arenas and four-player co-op.">
+<meta name="theme-color" content="#070809">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Slipstream — uxp70">
+<meta property="og:description" content="Quake-style movement, four weapons, five arenas, peer-to-peer co-op. Runs in a browser tab.">
+<meta property="og:url" content="https://uxp70.github.io/p/slipstream/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/styles.css">
+<link rel="stylesheet" href="/p/project.css">
+</head>
+<body class="proj proj--slipstream">
+<a class="skip" href="#main">Skip to the content</a>
+
+<header class="site-head">
+  <div class="wrap site-head__inner">
+    <a class="logo" href="/" aria-label="uxp70, home">uxp70<span class="logo__cursor" aria-hidden="true"></span></a>
+    <nav class="nav" aria-label="Main">
+      <a href="/">All projects</a>
+      <a href="https://uxp70.github.io/slipstream/">Play <span aria-hidden="true">↗</span></a>
+      <a class="nav__ext" href="https://github.com/uxp70/slipstream">Source <span aria-hidden="true">↗</span></a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="p-hero">
+    <div class="wrap">
+      <a class="p-back" href="/"><span aria-hidden="true">←</span> All projects</a>
+      <p class="p-kicker">01 · Game · Playable</p>
+      <h1 class="p-title">Slipstream</h1>
+      <p class="p-lede">A browser-based 3D arena shooter built around how it feels to move: Quake-style air control, auto-bunnyhop, dashes, slides and jump pads, in a neon arena with fully procedural audio. Solo or in a squad of up to four.</p>
+      <div class="p-actions">
+        <a class="btn btn--primary" href="https://uxp70.github.io/slipstream/">Play in the browser <span aria-hidden="true">↗</span></a>
+        <a class="btn" href="https://github.com/uxp70/slipstream">Read the source</a>
+      </div>
+      <dl class="p-meta">
+        <div><dt>Kind</dt><dd>Arena shooter</dd></div>
+        <div><dt>Built with</dt><dd>Three.js · Vite</dd></div>
+        <div><dt>Players</dt><dd>1–4 co-op</dd></div>
+        <div><dt>Runs on</dt><dd>GitHub Pages</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="p-section">
+    <div class="wrap p-grid">
+      <div class="p-side">
+        <span class="p-side__num">01</span>
+        <h2>Movement is the game</h2>
+        <p class="p-side__note">Not "apply force while a key is held" — the Quake model, where momentum is something you keep rather than something you reset.</p>
+      </div>
+      <div class="p-body">
+        <p>Everything else in Slipstream is arranged around the feel of the movement. Speed is the thing you spend and the thing you risk, so the camera sells it: FOV, roll, the wind layer and even the crosshair spread all respond to how fast you are going.</p>
+        <ul class="p-list">
+          <li><strong>Projection-limited acceleration</strong> on the ground, so turning while moving re-projects your speed instead of throwing it away.</li>
+          <li><strong>Air strafing</strong> — in the air only the component of velocity along your wish direction is limited, which is the whole reason you can gain speed by strafing in a circle. Gains taper near the cap so it stays controllable.</li>
+          <li><strong>Auto-bunnyhop</strong>: holding jump re-jumps on landing, and the impulse is applied before ground friction, so a hop never bleeds momentum.</li>
+          <li><strong>Forgiveness where it matters</strong> — 100&nbsp;ms of coyote time off a ledge, 130&nbsp;ms of buffered jump input, and jump-cut on release for short hops.</li>
+          <li><strong>Dash and slide</strong>: a 1.65&nbsp;s dash along your wish direction, airborne or grounded, with a FOV kick and trail burst; slide to duck under fire with its own lower friction.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="p-section">
+    <div class="wrap p-grid">
+      <div class="p-side">
+        <span class="p-side__num">02</span>
+        <h2>Four weapons, five arenas</h2>
+        <p class="p-side__note">Archetypes that cover ranges, not upgrades of one another. Each keeps its own magazine and reload behaviour.</p>
+      </div>
+      <div class="p-body">
+        <p>Switching is instant — <code>1</code>–<code>4</code>, <code>Q</code>, the mouse wheel, or a tap on the touch strip — and each gun remembers its own ammo and reload state, so you can interrupt a shotgun reload with a rifle shot and come back to it.</p>
+        <dl class="p-rows">
+          <div><dt>VX-9 ARC</dt><dd>Hitscan automatic rifle, 30-round magazine, tight spread. The all-rounder.</dd></div>
+          <div><dt>BR-12 Breacher</dt><dd>Eight-pellet hitscan shotgun, six shells, one reload per shell — a big close-range burst you can cut short by firing.</dd></div>
+          <div><dt>LN-7 Lance</dt><dd>Precision rail: a single hitscan beam, five-round magazine, heavy at any range, slow cycle.</dd></div>
+          <div><dt>PR-4 Havoc</dt><dd>Splash rocket with radius damage and self-knockback — the rocket-jump tool, and a legitimate way to cross a gap.</dd></div>
+        </dl>
+        <p style="margin-top:1.4rem">Five hand-built layouts sit on the same movement kit: <strong>CIRCUIT</strong> (one wide atrium with a sunken centre and a ring of pillars), <strong>SPIRE</strong> (stacked platforms and pads over a deep shaft), <strong>RIFT</strong> (a long canyon with a raised span), <strong>DUSTFALL</strong> (a frontier main street) and <strong>GLACIER</strong> (a frozen basin of ice shelves and high bridges).</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="p-section">
+    <div class="wrap p-grid">
+      <div class="p-side">
+        <span class="p-side__num">03</span>
+        <h2>Events, not recolours</h2>
+        <p class="p-side__note">NEON SIEGE, FRONTIER and WHITEOUT each swap the arena, the enemy silhouettes, the guns and the light.</p>
+      </div>
+      <div class="p-body">
+        <p>The point of an event is that it should read as a different fight rather than the same circuit in another colour. The trick is that the difference is render state, not geometry: colliders, spawns and jump pads never move, so the fight plays identically in every theme.</p>
+        <ul class="p-list">
+          <li><strong>FRONTIER</strong> replaces additive neon edges with dark ones, turns glowing cap planes into solid roofs, adds a hard low sun and dust haze, and cuts bloom to a tenth — additive lines over daylight read as wireframe, not as a place.</li>
+          <li>The town is dressed like a real one: false fronts, porch roofs with painted shade, framed windows, boardwalks, barrels and lettered boards (SALOON, LIVERY, MERCANTILE, BANK…), all drawn into one canvas atlas rather than shipped as assets.</li>
+          <li><strong>WHITEOUT</strong> is flat white overcast, drifted snow and pale ice with no glow; switching back to NEON SIEGE restores the chrome kit exactly, because the defaults live in one place and each event only states its differences.</li>
+          <li>Enemy skins change colour, emissive and silhouette only — health, speed, damage and score still come from the type and the difficulty tier, so a theme can never quietly change the balance.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="p-section">
+    <div class="wrap p-grid">
+      <div class="p-side">
+        <span class="p-side__num">04</span>
+        <h2>Coins, bosses and squads</h2>
+        <p class="p-side__note">A progression layer that runs on static files, and co-op with no game server at all.</p>
+      </div>
+      <div class="p-body">
+        <p>Kills and cleared waves pay coins, banked between sessions. The armory spends them on buffs for the <em>next</em> run only — buying is a plan for one fight, not a permanent stat — and each further stack of the same buff costs 60% more. Daily rewards climb a seven-day streak that resets if you miss a day.</p>
+        <ul class="p-list">
+          <li><strong>Wardens</strong> arrive every fifth wave: one large hull with its own health bar, a thinner escort, a telegraphed five-shot volley and a repair pickup on death. It is one more row in the enemy table, so difficulty tiers, event skins and co-op snapshots need no special case.</li>
+          <li><strong>Three difficulties</strong> — ROOKIE, STANDARD, OVERCLOCK — scale only levers the wave already has, so combos and scores stay comparable and the arenas stay readable.</li>
+          <li><strong>Accounts are local</strong>: passcodes are stored as PBKDF2-SHA-256 hashes with a per-account salt (120k iterations, WebCrypto), never as text. It is device identity, not a cloud login — the game is static files, so it is a progression layer between sessions, and the seam a hosted provider would sit behind later.</li>
+          <li><strong>Squad co-op</strong> uses WebRTC with the public PeerJS broker only for the handshake; after that every packet goes browser to browser. The host owns the wave, damage and score, guests simulate their own movement and report hits, and a downed player rebuilds after about 3.5 seconds instead of ending the run.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="p-section">
+    <div class="wrap p-grid">
+      <div class="p-side">
+        <span class="p-side__num">05</span>
+        <h2>Under the hood</h2>
+        <p class="p-side__note">Static geometry batched to roughly twenty draw calls, audio synthesised at runtime, and touch treated as a first-class input.</p>
+      </div>
+      <div class="p-body">
+        <p>Each arena's static geometry is merged into three batched meshes — bodies, edges and caps — with vertex colours and a single material, and every viewmodel is merged by material. The renderer adapts: AUTO lowers the render scale first and only drops bloom if that is not enough, while HIGH keeps bloom and MSAA and FRAMES pins resolution low for the smoothest motion.</p>
+        <ul class="p-list">
+          <li>All sound is Web Audio, generated at runtime: layered shots with per-weapon profiles, enemies panned by position, wind and ambience that respond to speed, and a procedural convolution reverb used as a send.</li>
+          <li>Touch goes through the same virtual-input layer as the keyboard, so the movement code has no mobile-specific branches — thumbstick, drag-to-look, hold-to-fire, a weapon strip and portrait FOV handling.</li>
+          <li>Tests cover movement, events, inventory, accounts, the armory, difficulty scaling, the boss cadence, a Playwright touch pass and two headless clients through the real broker.</li>
+        </ul>
+        <pre><code>npm install
+npm run dev      # http://localhost:5173
+npm run build    # production build into dist/</code></pre>
+      </div>
+    </div>
+  </section>
+
+  <nav class="p-next wrap" aria-label="Project navigation">
+    <a class="p-next__back" href="/">&larr; Back to all projects</a>
+    <a class="p-next__link" href="/p/pixel-playground/"><span>Next</span> Pixel Playground →</a>
+  </nav>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap site-foot__inner">
+    <p>© <span id="year">2026</span> uxp70 · Everything here is public on <a href="https://github.com/uxp70">GitHub</a>.</p>
+    <p class="site-foot__meta">Plain HTML, CSS and a little JS. No trackers.</p>
+  </div>
+</footer>
+<script>document.getElementById("year").textContent = String(new Date().getFullYear());</script>
+</body>
+</html>

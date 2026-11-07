@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Raw File Website — raw file links from static hosting — uxp70</title>
+<meta name="description" content="Raw File Website turns GitHub Pages into a file host: uploads are committed into your own repo through the GitHub API, big files are split and reassembled into release assets, and every link serves raw bytes.">
+<meta name="theme-color" content="#070809">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Raw File Website — uxp70">
+<meta property="og:description" content="Upload a file, get a raw link you can copy, share, hotlink or embed — from hosting that cannot run an upload server.">
+<meta property="og:url" content="https://uxp70.github.io/p/raw-file-website/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/styles.css">
+<link rel="stylesheet" href="/p/project.css">
+</head>
+<body class="proj proj--raw">
+<a class="skip" href="#main">Skip to the content</a>
+
+<header class="site-head">
+  <div class="wrap site-head__inner">
+    <a class="logo" href="/" aria-label="uxp70, home">uxp70<span class="logo__cursor" aria-hidden="true"></span></a>
+    <nav class="nav" aria-label="Main">
+      <a href="/">All projects</a>
+      <a href="https://uxp70.github.io/raw-file-website/">Open the tool <span aria-hidden="true">↗</span></a>
+      <a class="nav__ext" href="https://github.com/uxp70/raw-file-website">Source <span aria-hidden="true">↗</span></a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="p-hero">
+    <div class="wrap">
+      <a class="p-back" href="/"><span aria-hidden="true">←</span> All projects</a>
+      <p class="p-kicker">03 · Tool · Live</p>
+      <h1 class="p-title">Raw File Website</h1>
+      <p class="p-lede">Upload a file, get a raw link you can copy, share, hotlink or embed — from static hosting that cannot run an upload server. Uploads are committed into your own repo instead.</p>
+      <div class="p-actions">
+        <a class="btn btn--primary" href="https://uxp70.github.io/raw-file-website/">Open the tool <span aria-hidden="true">↗</span></a>
+        <a class="btn" href="https://github.com/uxp70/raw-file-website">Read the source</a>
+      </div>
+      <dl class="p-meta">
+        <div><dt>Kind</dt><dd>File host</dd></div>
+        <div><dt>Built with</dt><dd>Vanilla JS · GitHub API</dd></div>
+        <div><dt>Storage</dt><dd>Your own repo</dd></div>
+        <div><dt>Max size</dt><dd>~2 GB, split</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="p-section">
+    <div class="wrap p-grid">
+      <div class="p-side">
+        <span class="p-side__num">01</span>
+        <h2>Why uploads go through the API</h2>
+        <p class="p-side__note">Pages can serve files. It cannot accept them. The GitHub API can do both.</p>
+      </div>
+      <div class="p-body">
+        <p>You fill in owner, repo and branch, paste a fine-grained token with <em>Contents: read and write</em>, and drop files. They are committed to <code>uploads/</code> in your repository, and each one comes back with working links: a <code>raw.githubusercontent.com</code> URL and the equivalent Pages URL. The token stays in your browser.</p>
+        <ul class="p-list">
+          <li><strong>Every link is raw bytes.</strong> No preview pages, no interstitial, nothing to click through — the URL is the file.</li>
+          <li><strong>Delete means delete:</strong> removing an entry takes out its pieces, manifest, published release asset and index row, so its raw link stops working.</li>
+          <li><strong>No Git LFS</strong>, deliberately: its upload server blocks browsers, its free quota is small, and LFS-tracked files serve as pointer text on raw links, which would break the whole premise.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="p-section">
+    <div class="wrap p-grid">
+      <div class="p-side">
+        <span class="p-side__num">02</span>
+        <h2>Big files are split, then reassembled</h2>
+        <p class="p-side__note">GitHub caps a single file at 100 MB and the API rejects big blobs, so size is handled by chopping the file rather than by refusing it.</p>
+      </div>
+      <div class="p-body">
+        <p>Up to roughly 40 MB a file uploads as one blob with a direct raw link. Past that, it becomes 10 MB pieces plus a small manifest, and still shows up on the page as a single entry. An Actions workflow then reassembles the pieces and publishes the result as a release asset, which serves the true bytes at a stable URL.</p>
+        <ul class="p-list">
+          <li>Files from roughly 40 MB to 2 GB go this route, and the entry gains its release-asset raw link a few minutes after upload.</li>
+          <li>Links are tracked in <code>uploads/files-index.json</code>, so the page can list what exists without walking the tree.</li>
+          <li>If GitHub refuses a single big blob anyway, the site splits it automatically and says so instead of failing silently.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="p-section">
+    <div class="wrap p-grid">
+      <div class="p-side">
+        <span class="p-side__num">03</span>
+        <h2>One queue, resumable</h2>
+        <p class="p-side__note">Parallel uploads into one branch is how you get 409s. So there is a single save queue.</p>
+      </div>
+      <div class="p-body">
+        <p>Every save goes through one queue with automatic retry, which stops two simultaneous uploads from tripping over the branch head. If a long upload stalls, it pauses with <strong>↻ Resume</strong>, continuing from the pieces already saved, and <strong>Discard</strong> — rather than dying and losing the work.</p>
+        <p>Deleting a multi-piece entry clears its manifest and every piece, so nothing is left behind to be reassembled later.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="p-section">
+    <div class="wrap p-grid">
+      <div class="p-side">
+        <span class="p-side__num">04</span>
+        <h2>Self-host for no limits</h2>
+        <p class="p-side__note">The same page detects a server and switches modes, so you get unlimited size without a second app.</p>
+      </div>
+      <div class="p-body">
+        <p>The bundled zero-dependency Node server streams raw bytes straight to disk — no size limit and no buffering the file in memory — and serves raw links with the right content type and Range support.</p>
+        <pre><code>node server.js
+# open http://localhost:3000
+
+POST   /api/upload?filename=…
+GET    /api/files
+DELETE /api/files/:id
+GET    /api/health</code></pre>
+      </div>
+    </div>
+  </section>
+
+  <nav class="p-next wrap" aria-label="Project navigation">
+    <a class="p-next__back" href="/">&larr; Back to all projects</a>
+    <a class="p-next__link" href="/p/seusign/"><span>Next</span> SEUsign →</a>
+  </nav>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap site-foot__inner">
+    <p>© <span id="year">2026</span> uxp70 · Everything here is public on <a href="https://github.com/uxp70">GitHub</a>.</p>
+    <p class="site-foot__meta">Plain HTML, CSS and a little JS. No trackers.</p>
+  </div>
+</footer>
+<script>document.getElementById("year").textContent = String(new Date().getFullYear());</script>
+</body>
+</html>
