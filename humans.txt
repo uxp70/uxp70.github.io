@@ -1,0 +1,12 @@
+/* TEAM */
+
+  Human:    uxp70 — prompts, direction, corrections
+  Machine:  a language model — markup, prose, CSS
+
+/* SITE */
+
+  Standards:  HTML5, CSS, vanilla JS
+  Software:   no build step, no dependencies, no trackers
+  Note:       vibecoded — generated from prompts, then read and fixed by hand
+  Source:     https://github.com/uxp70/uxp70.github.io
+  Last edit:  2026-11-07

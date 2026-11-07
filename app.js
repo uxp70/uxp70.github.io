@@ -31,4 +31,12 @@
       }
     });
   });
+
+  if (window.console && console.log) {
+    console.log(
+      "%c vibecoded %c generated from a prompt, then read and corrected by hand",
+      "background:#c8f751;color:#070809;font-weight:700;padding:2px 6px;border-radius:3px",
+      "color:#8a929e"
+    );
+  }
 })();

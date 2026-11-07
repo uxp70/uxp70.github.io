@@ -14,6 +14,7 @@ styles.css            design system, dark neon theme
 p/project.css         shared styles for the detail pages
 app.js                project filter + footer year on the landing page
 favicon.svg           favicon
+humans.txt            colophon: who prompted, who typed
 .nojekyll             stop Jekyll rewriting asset paths
 ```
 
@@ -52,3 +53,7 @@ The user site lives in this repo, named `uxp70.github.io`, and Pages serves it f
 4. Add the new page to the list in `p/index.html`.
 
 Live links point at absolute `https://uxp70.github.io/<repo>/` URLs so they keep working from a local server too, while the internal links (`/`, `/p/…`, `/styles.css`) resolve at the domain root.
+
+## Colophon
+
+The projects are hand-built. This site about them is not: the markup and prose were vibecoded — generated from prompts, then read and corrected by hand. The `generator` meta tag, the footer note, `humans.txt` and the comment in each page's `<head>` say so quietly, in the places people actually look.
