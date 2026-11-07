@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SEUsign — an on-device iOS signer — uxp70</title>
+<meta name="description" content="SEUsign is an iOS signing app for developer certificates: sideload, patch and install apps on device, browse AltStore sources, inject tweaks with ElleKit. A GPL-3.0 fork of Feather.">
+<meta name="theme-color" content="#070809">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SEUsign — uxp70">
+<meta property="og:description" content="Sideload, patch and install iOS apps without a computer. GPL-3.0, no tracking.">
+<meta property="og:url" content="https://uxp70.github.io/p/seusign/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/styles.css">
+<link rel="stylesheet" href="/p/project.css">
+</head>
+<body class="proj proj--seu">
+<a class="skip" href="#main">Skip to the content</a>
+
+<header class="site-head">
+  <div class="wrap site-head__inner">
+    <a class="logo" href="/" aria-label="uxp70, home">uxp70<span class="logo__cursor" aria-hidden="true"></span></a>
+    <nav class="nav" aria-label="Main">
+      <a href="/">All projects</a>
+      <a href="https://github.com/uxp70/SEUsign/releases">Download <span aria-hidden="true">↗</span></a>
+      <a class="nav__ext" href="https://github.com/uxp70/SEUsign">Source <span aria-hidden="true">↗</span></a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="p-hero">
+    <div class="wrap">
+      <a class="p-back" href="/"><span aria-hidden="true">←</span> All projects</a>
+      <p class="p-kicker">04 · iOS · Download</p>
+      <h1 class="p-title">SEUsign</h1>
+      <p class="p-lede">An on-device signer for developer certificates: sideload, patch and install iOS apps without a computer. A rebranded fork of Feather by Samara, with no tracking and no analytics.</p>
+      <div class="p-actions">
+        <a class="btn btn--primary" href="https://github.com/uxp70/SEUsign/releases">Download the .ipa <span aria-hidden="true">↗</span></a>
+        <a class="btn" href="https://github.com/uxp70/SEUsign">Read the source</a>
+      </div>
+      <dl class="p-meta">
+        <div><dt>Kind</dt><dd>iOS utility</dd></div>
+        <div><dt>Built with</dt><dd>Swift · Xcode</dd></div>
+        <div><dt>License</dt><dd>GPL-3.0</dd></div>
+        <div><dt>Install</dt><dd>.ipa from Releases</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="p-section">
+    <div class="wrap p-grid">
+      <div class="p-side">
+        <span class="p-side__num">01</span>
+        <h2>Signing on the phone</h2>
+        <p class="p-side__note">The point is that the whole loop — pick an app, sign it, install it — happens on the device you are holding.</p>
+      </div>
+      <div class="p-body">
+        <p>SEUsign signs and installs applications using your own developer certificate, and does it on-device. It also browses AltStore source repositories, so an app repository can be added and used without a desktop, and it shows detailed information about the apps you have and the certificates you hold.</p>
+        <ul class="p-list">
+          <li><strong>AltStore sources</strong> — point it at a source and install from it, the same distribution format AltStore uses.</li>
+          <li><strong>Certificate view</strong> — what you are signing with, and when it expires, in the app rather than in a keychain menu.</li>
+          <li><strong>No tracking, no analytics</strong> — nothing about your usage leaves the device.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="p-section">
+    <div class="wrap p-grid">
+      <div class="p-side">
+        <span class="p-side__num">02</span>
+        <h2>What you can change while signing</h2>
+        <p class="p-side__note">Signing is also the moment to patch an app, so the options are about modifying it rather than just wrapping it.</p>
+      </div>
+      <div class="p-body">
+        <dl class="p-rows">
+          <div><dt>Appearance</dt><dd>Adjust the app's look as part of the signing configuration.</dd></div>
+          <div><dt>Files app</dt><dd>Allow support for the Files app, so the app can be given documents.</dd></div>
+          <div><dt>Compatibility</dt><dd>Patch apps for compatibility, so an older build still runs where you need it.</dd></div>
+          <div><dt>Liquid Glass</dt><dd>Apply the Liquid Glass patch at signing time.</dd></div>
+          <div><dt>Tweaks</dt><dd>Tweak injection for advanced users through <strong>ElleKit</strong>, including <code>.deb</code> and <code>.dylib</code> files.</dd></div>
+        </dl>
+        <p style="margin-top:1.3rem">The rest of the app is deliberately plain: a clean UI, a short path from "I have an <code>.ipa</code>" to "it is installed".</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="p-section">
+    <div class="wrap p-grid">
+      <div class="p-side">
+        <span class="p-side__num">03</span>
+        <h2>Building it yourself</h2>
+        <p class="p-side__note">Xcode locally, or the release workflow on a macOS runner if you would rather not open Xcode at all.</p>
+      </div>
+      <div class="p-body">
+        <p>The repository uses submodules, so clone it recursively before opening <code>SEUsign.xcworkspace</code>, then select the <code>SEUsign</code> scheme and build for your device.</p>
+        <pre><code>git clone --recurse-submodules https://github.com/uxp70/SEUsign.git
+open SEUsign.xcworkspace
+# select the SEUsign scheme, build for your device</code></pre>
+        <p style="margin-top:1.1rem">The GitHub Actions workflow at <code>.github/workflows/release.yml</code> builds on a macOS runner and produces <code>packages/SEUsign.ipa</code>. Trigger it from the Actions tab, or push a <code>v*</code> tag.</p>
+        <p>Translations live in <code>SEUsign/Resources/Localizable.xcstrings</code>; adding a language is done through Xcode's string catalogue interface.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="p-section">
+    <div class="wrap p-grid">
+      <div class="p-side">
+        <span class="p-side__num">04</span>
+        <h2>Credits and licence</h2>
+        <p class="p-side__note">This is a fork, and the README is honest about what it stands on.</p>
+      </div>
+      <div class="p-body">
+        <p>SEUsign is a rebranded fork of <strong>Feather</strong> by Samara (<code>claration</code>), released under the <strong>GPL-3.0</strong>. The signing pipeline leans on <strong>Zsign</strong>, device communication on <strong>idevice</strong>, packaging help came from <strong>ByePassHub</strong>'s ecosystem, and the http server follows patterns from <strong>Asspp</strong>; <strong>LiveContainer</strong>, <strong>Nuke</strong>, <strong>Vapor</strong>, <strong>plistserver</strong> and <strong>backloop.dev</strong> are credited for fixes, caching, the server framework and a locally trusted certificate.</p>
+        <p class="p-callout">Sideloading with a developer certificate is a personal-use workflow, not an App Store install. You need your own certificate, and what you sign is your responsibility.</p>
+      </div>
+    </div>
+  </section>
+
+  <nav class="p-next wrap" aria-label="Project navigation">
+    <a class="p-next__back" href="/">&larr; Back to all projects</a>
+    <a class="p-next__link" href="/p/zombsclone-io/"><span>Next</span> ZombsClone.io →</a>
+  </nav>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap site-foot__inner">
+    <p>© <span id="year">2026</span> uxp70 · Everything here is public on <a href="https://github.com/uxp70">GitHub</a>.</p>
+    <p class="site-foot__meta">Plain HTML, CSS and a little JS. No trackers.</p>
+  </div>
+</footer>
+<script>document.getElementById("year").textContent = String(new Date().getFullYear());</script>
+</body>
+</html>

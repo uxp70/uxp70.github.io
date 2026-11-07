@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ZombsClone.io — an open-source battle royale — uxp70</title>
+<meta name="description" content="ZombsClone.io is a 2D top-down battle royale in vanilla JavaScript and Canvas: a 9000px map, 13 weapons, 100 bots offline, and authoritative online play on a Node server.">
+<meta name="theme-color" content="#070809">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ZombsClone.io — uxp70">
+<meta property="og:description" content="Solo against 100 bots offline, or online on a real server. Clean-room, MIT, no copied assets.">
+<meta property="og:url" content="https://uxp70.github.io/p/zombsclone-io/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/styles.css">
+<link rel="stylesheet" href="/p/project.css">
+</head>
+<body class="proj proj--zombs">
+<a class="skip" href="#main">Skip to the content</a>
+
+<header class="site-head">
+  <div class="wrap site-head__inner">
+    <a class="logo" href="/" aria-label="uxp70, home">uxp70<span class="logo__cursor" aria-hidden="true"></span></a>
+    <nav class="nav" aria-label="Main">
+      <a href="/">All projects</a>
+      <a href="https://uxp70.github.io/zombsclone-io/">Play <span aria-hidden="true">↗</span></a>
+      <a class="nav__ext" href="https://github.com/uxp70/zombsclone-io">Source <span aria-hidden="true">↗</span></a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="p-hero">
+    <div class="wrap">
+      <a class="p-back" href="/"><span aria-hidden="true">←</span> All projects</a>
+      <p class="p-kicker">05 · Game · Playable</p>
+      <h1 class="p-title">ZombsClone.io</h1>
+      <p class="p-lede">An open-source ZombsRoyale.io clone: a 2D top-down battle royale in vanilla JavaScript and Canvas. Solo against up to a hundred bots offline, or online on a dedicated Node server — no player-hosted sessions.</p>
+      <div class="p-actions">
+        <a class="btn btn--primary" href="https://uxp70.github.io/zombsclone-io/">Play in the browser <span aria-hidden="true">↗</span></a>
+        <a class="btn" href="https://github.com/uxp70/zombsclone-io">Read the source</a>
+      </div>
+      <dl class="p-meta">
+        <div><dt>Kind</dt><dd>Battle royale</dd></div>
+        <div><dt>Built with</dt><dd>JS · Canvas · Node</dd></div>
+        <div><dt>Offline</dt><dd>Up to 100 bots</dd></div>
+        <div><dt>License</dt><dd>MIT</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="p-section">
+    <div class="wrap p-grid">
+      <div class="p-side">
+        <span class="p-side__num">01</span>
+        <h2>The map, the loot, the storm</h2>
+        <p class="p-side__note">A 9000-pixel map generated from a seed, with interiors that actually hide things.</p>
+      </div>
+      <div class="p-body">
+        <p>Thirteen named points of interest sit on a seeded map of grass, roads, ponds that slow you down, trees, rocks, crates, barrels, bushes and walled compounds with door gaps. Thirty houses have doors and roofs, and their interiors stay hidden until you are inside or at the doorway.</p>
+        <ul class="p-list">
+          <li><strong>Guns only come from chests</strong> — basic 1×1 or glowing golden 1×2 — in houses, POIs and the wilds. Ground loot and crates give ammo, heals and shields, which keeps the early game about where you go rather than what you walk over.</li>
+          <li><strong>Thirteen weapons</strong> across five rarity tiers, each with its own shaded in-hand model: fists, pistol, revolver, SMG, shotgun, assault, burst, LMG, minigun (which slows you down), scout, sniper, crossbow and a grenade launcher with area damage.</li>
+          <li><strong>The storm is a wall, not a wash</strong>: a pulsing energy edge marks the zone rim, the next circle stays gold, and a caught player gets an arrow plus a distance readout instead of a red tint over the whole screen.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="p-section">
+    <div class="wrap p-grid">
+      <div class="p-side">
+        <span class="p-side__num">02</span>
+        <h2>Bots that behave</h2>
+        <p class="p-side__note">Nine bots dropped in a lobby is a shooting gallery. A hundred that loot, rotate and heal is a match.</p>
+      </div>
+      <div class="p-body">
+        <p>The match opens in a lobby plaza with a countdown, a plane flyover and a steerable parachute — no shooting until you land — plus a grace period where bots hold fire but still retaliate if you start it. Bots trickle into the lobby gradually and scatter-drop across the map rather than landing as one blob.</p>
+        <ul class="p-list">
+          <li>They seek chests when unarmed, break crates, loot by score, unstick themselves from walls, strafe in fights, heal, rotate with the zone and break off when it is hopeless.</li>
+          <li>They never chat. Custom chat is for people: <kbd>Enter</kbd>, type, <kbd>Enter</kbd> to send, <kbd>Esc</kbd> to cancel.</li>
+          <li>Solo, duo and squad team sizes apply to bots mode; online is free-for-all.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="p-section">
+    <div class="wrap p-grid">
+      <div class="p-side">
+        <span class="p-side__num">03</span>
+        <h2>Online means a real server</h2>
+        <p class="p-side__note">Pages is static, and this game refused to fake it with peer hosting.</p>
+      </div>
+      <div class="p-body">
+        <p>The client is static and deploys to GitHub Pages; online play connects over WebSocket to an authoritative Node simulation, so every browser is an equal client and nobody's machine is the host. You press <strong>Play online</strong> and auto-matchmake into a public lobby — no rooms, no codes, no bots — and the match starts thirty seconds after two or more humans are in.</p>
+        <ul class="p-list">
+          <li>Your client owns your position and sends it with every input; snapshots carry everyone else plus your full HUD state, the plane and the killfeed, trimmed to roughly 12&nbsp;KB at 15&nbsp;Hz with interpolation.</li>
+          <li>Small lobbies get a tighter starting zone, leavers are removed cleanly, and a stalled guest re-joins once before exiting with a message. A tiny H/G readout shows connection health.</li>
+          <li>One-click deploy to Render is wired up (<code>render.yaml</code> plus a health check, Frankfurt by default), and that server also hosts the client — so a single URL can serve the whole game.</li>
+        </ul>
+        <pre><code>npm install --prefix server
+npm start --prefix server    # ws://localhost:8081</code></pre>
+      </div>
+    </div>
+  </section>
+
+  <section class="p-section">
+    <div class="wrap p-grid">
+      <div class="p-side">
+        <span class="p-side__num">04</span>
+        <h2>Holding a frame rate</h2>
+        <p class="p-side__note">Canvas rendering in a browser that might be a 4K desktop or a five-year-old phone.</p>
+      </div>
+      <div class="p-body">
+        <p>Scenery gradients are cached, the minimap is throttled, particles are capped and distant players render as cheap dots with no names or eyes. An on-screen meter breaks the frame into simulation and render time, and quality scales automatically — shading first, then shadows, then resolution — recovering when frames are smooth again. A 4K screen starts deliberately scaled.</p>
+        <ul class="p-list">
+          <li>Bullets are substepped, so a fast round cannot tunnel through a thin wall between frames.</li>
+          <li>All sound is procedural Web Audio — no asset files to load.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="p-section">
+    <div class="wrap p-grid">
+      <div class="p-side">
+        <span class="p-side__num">05</span>
+        <h2>Local accounts, honestly described</h2>
+        <p class="p-side__note">A progression layer with no backend, and a README that does not oversell it.</p>
+      </div>
+      <div class="p-body">
+        <p>Register on the menu with a username and password; accounts live in <code>localStorage</code>, passwords are salted and SHA-256 hashed, and each account keeps persistent stats — games, kills, wins — plus a body colour you can reroll. Logged-in players always play under their username; guests can still play through the nickname field.</p>
+        <p class="p-callout">Local auth stops casual snooping, not a determined attacker with device access. True cross-device accounts would need a backend.</p>
+      </div>
+    </div>
+  </section>
+
+  <nav class="p-next wrap" aria-label="Project navigation">
+    <a class="p-next__back" href="/">&larr; Back to all projects</a>
+    <a class="p-next__link" href="/p/nebula-strike/"><span>Next</span> Nebula Strike →</a>
+  </nav>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap site-foot__inner">
+    <p>© <span id="year">2026</span> uxp70 · Everything here is public on <a href="https://github.com/uxp70">GitHub</a>.</p>
+    <p class="site-foot__meta">Plain HTML, CSS and a little JS. No trackers.</p>
+  </div>
+</footer>
+<script>document.getElementById("year").textContent = String(new Date().getFullYear());</script>
+</body>
+</html>

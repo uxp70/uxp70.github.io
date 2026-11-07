@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nebula Strike — neon arena shooter with accounts — uxp70</title>
+<meta name="description" content="Nebula Strike is a neon arena shooter that runs entirely in the browser: local accounts, two leaderboards, wave combat, bosses every fifth wave and MQTT squad co-op.">
+<meta name="theme-color" content="#070809">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Nebula Strike — uxp70">
+<meta property="og:description" content="Waves, bosses, a global leaderboard over ntfy.sh, and four-pilot squads over a public MQTT relay.">
+<meta property="og:url" content="https://uxp70.github.io/p/nebula-strike/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/styles.css">
+<link rel="stylesheet" href="/p/project.css">
+</head>
+<body class="proj proj--nebula">
+<a class="skip" href="#main">Skip to the content</a>
+
+<header class="site-head">
+  <div class="wrap site-head__inner">
+    <a class="logo" href="/" aria-label="uxp70, home">uxp70<span class="logo__cursor" aria-hidden="true"></span></a>
+    <nav class="nav" aria-label="Main">
+      <a href="/">All projects</a>
+      <a href="https://uxp70.github.io/nebula-strike/">Play <span aria-hidden="true">↗</span></a>
+      <a class="nav__ext" href="https://github.com/uxp70/nebula-strike">Source <span aria-hidden="true">↗</span></a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="p-hero">
+    <div class="wrap">
+      <a class="p-back" href="/"><span aria-hidden="true">←</span> All projects</a>
+      <p class="p-kicker">06 · Game · Playable</p>
+      <h1 class="p-title">Nebula Strike</h1>
+      <p class="p-lede">A polished neon arena shooter that runs entirely in the browser, with a real account system, two leaderboards and wave-based combat. Static files, no backend, no build step.</p>
+      <div class="p-actions">
+        <a class="btn btn--primary" href="https://uxp70.github.io/nebula-strike/">Play in the browser <span aria-hidden="true">↗</span></a>
+        <a class="btn" href="https://github.com/uxp70/nebula-strike">Read the source</a>
+      </div>
+      <dl class="p-meta">
+        <div><dt>Kind</dt><dd>Arena shooter</dd></div>
+        <div><dt>Built with</dt><dd>JS · Canvas · WebAudio</dd></div>
+        <div><dt>Accounts</dt><dd>Local, hashed</dd></div>
+        <div><dt>License</dt><dd>MIT</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="p-section">
+    <div class="wrap p-grid">
+      <div class="p-side">
+        <span class="p-side__num">01</span>
+        <h2>Waves, bosses, upgrades</h2>
+        <p class="p-side__note">A top-down arena shooter built for the feel of a hit: screen shake, particles, power-ups and a level-up choice mid-fight.</p>
+      </div>
+      <div class="p-body">
+        <p>Move with WASD, aim with the mouse, dash on a cooldown, and cut through waves of four enemy types with a boss every fifth wave. Power-ups and level-up upgrades change the run as it goes, and the soundtrack is synthesised with WebAudio — there are no audio files to download.</p>
+        <dl class="p-rows">
+          <div><dt>Difficulty</dt><dd>Rookie, Pilot and Ace, adjusting enemy health, speed and spawn rate.</dd></div>
+          <div><dt>Controls</dt><dd>Keyboard and mouse, touch (left thumb moves, right thumb aims and auto-fires) and standard gamepads.</dd></div>
+          <div><dt>Balance</dt><dd>A single <code>CONFIG</code> object at the top of <code>js/game.js</code>.</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section class="p-section">
+    <div class="wrap p-grid">
+      <div class="p-side">
+        <span class="p-side__num">02</span>
+        <h2>Accounts without a backend</h2>
+        <p class="p-side__note">Register, log in, log out or play as a guest — and the session survives a reload.</p>
+      </div>
+      <div class="p-body">
+        <p>Passwords use a random 16-byte salt per account and SHA-256 over salt plus password, and are never stored in plain text. Sessions persist across reloads, profile stats travel with the account, and guest play is a first-class option that simply does not post to the leaderboard.</p>
+        <ul class="p-list">
+          <li>Everything lives under three <code>localStorage</code> keys: <code>nebula_users_v1</code>, <code>nebula_session_v1</code> and <code>nebula_scores_v1</code>.</li>
+          <li>This is per-browser identity, which is the honest trade for a static site. The code marks the seam (<code>TODO:online</code> in <code>js/auth.js</code>) where Firebase or Supabase would slot in for cross-device logins.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="p-section">
+    <div class="wrap p-grid">
+      <div class="p-side">
+        <span class="p-side__num">03</span>
+        <h2>Two leaderboards</h2>
+        <p class="p-side__note">One is yours. The other is nobody's server in particular — it is a public topic.</p>
+      </div>
+      <div class="p-body">
+        <p>The global board publishes finished runs from logged-in players to a public <strong>ntfy.sh</strong> topic, and the tab aggregates the best score per pilot across everyone. ntfy keeps roughly twelve hours of message history, so "global" means the recent worldwide top — and every entry is validated on read, with junk dropped. Posts queue while offline and flush on reconnect.</p>
+        <ul class="p-list">
+          <li><strong>Personal</strong> keeps your all-time bests, your last ten runs and your live global rank, in the browser.</li>
+          <li>Changing <code>TOPIC</code> in <code>js/global.js</code> moves or resets the board, since the first publish creates the topic.</li>
+          <li>The topic is public by design, so nothing secret belongs in it.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="p-section">
+    <div class="wrap p-grid">
+      <div class="p-side">
+        <span class="p-side__num">04</span>
+        <h2>Squads over a public relay</h2>
+        <p class="p-side__note">Four pilots, four-letter room codes, and no server of your own to run.</p>
+      </div>
+      <div class="p-body">
+        <p>The Squad tab (login required) creates or joins a room for up to four pilots, and the creator's browser hosts the run over a public MQTT relay — EMQX primary, HiveMQ as fallback, no accounts or keys. The host simulates; guests stream input at about 12&nbsp;Hz and render snapshots at about 10&nbsp;Hz.</p>
+        <ul class="p-list">
+          <li>XP and level are shared, the host picks upgrades for the squad, enemies scale with pilot count, and everyone keeps their own coins and credits while the shared score goes global.</li>
+          <li>If the host drops, the next pilot resumes from the latest snapshot — host migration, without a server to migrate.</li>
+          <li>If the relay is unreachable, solo play still works fully offline.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="p-section">
+    <div class="wrap p-grid">
+      <div class="p-side">
+        <span class="p-side__num">05</span>
+        <h2>Two minutes to deploy</h2>
+        <p class="p-side__note">No install, no build, no environment variables.</p>
+      </div>
+      <div class="p-body">
+        <p>Push the repository, set Pages to deploy from a branch, and the game is live at your Pages URL. A workflow at <code>.github/workflows/pages.yml</code> does the deploy on every push to <code>main</code>.</p>
+        <pre><code>npx serve .
+# or
+python -m http.server 8000
+# open http://localhost:8000</code></pre>
+      </div>
+    </div>
+  </section>
+
+  <nav class="p-next wrap" aria-label="Project navigation">
+    <a class="p-next__back" href="/">&larr; Back to all projects</a>
+    <a class="p-next__link" href="/p/ios-everything/"><span>Next</span> iOSeverything →</a>
+  </nav>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap site-foot__inner">
+    <p>© <span id="year">2026</span> uxp70 · Everything here is public on <a href="https://github.com/uxp70">GitHub</a>.</p>
+    <p class="site-foot__meta">Plain HTML, CSS and a little JS. No trackers.</p>
+  </div>
+</footer>
+<script>document.getElementById("year").textContent = String(new Date().getFullYear());</script>
+</body>
+</html>
