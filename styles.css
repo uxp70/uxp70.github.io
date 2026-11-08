@@ -730,6 +730,23 @@ h2 {
 }
 .site-foot a:hover { color: var(--ink); }
 
+/* ---------------------------------------------------- colophon link ----- */
+
+/* The footer word is a hint on hover and a link on touch. One rule only. */
+.site-foot__meta .vibe {
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.site-foot__meta .vibe abbr {
+  text-decoration: underline dotted;
+  text-underline-offset: 3px;
+  cursor: help;
+}
+
+.site-foot__meta .vibe:hover,
+.site-foot__meta .vibe:focus-visible { color: var(--ink); }
+
 /* -------------------------------------------------------------- motion --- */
 
 .hero > .wrap > * {

@@ -10,6 +10,8 @@ Plain HTML, CSS and a little JavaScript. No build step, no dependencies, no trac
 index.html            the landing page: hero, filters, seven project cards, about
 p/index.html          index of the project notes
 p/<project>/index.html   one detail page per project
+colophon/index.html   how the site was made, from prompts to commits
+404.html              custom not-found page, served by Pages for unknown paths
 styles.css            design system, dark neon theme
 p/project.css         shared styles for the detail pages
 app.js                project filter + footer year on the landing page
@@ -45,6 +47,8 @@ The server resolves directory requests to `index.html`, so `/p/slipstream/` work
 
 The user site lives in this repo, named `uxp70.github.io`, and Pages serves it from the repository root on `main`. Pushing to `main` republishes; there is nothing else to run.
 
+`404.html` is picked up automatically: Pages serves it, at the requested path, for any URL that does not resolve to a file.
+
 ## Adding a project
 
 1. Add an `<article class="card" data-cat="games|tools|ios">` to `index.html`, with an accent class (`card--pixel`, `card--raw`, …), the chips and the Play/Source/Details buttons. The featured card (Slipstream) is `.feature`.
@@ -56,4 +60,4 @@ Live links point at absolute `https://uxp70.github.io/<repo>/` URLs so they keep
 
 ## Colophon
 
-The projects are hand-built. This site about them is not: the markup and prose were vibecoded — generated from prompts, then read and corrected by hand. The `generator` meta tag, the footer note, `humans.txt` and the comment in each page's `<head>` say so quietly, in the places people actually look.
+The projects are hand-built. This site about them is not: the markup and prose were vibecoded — generated from prompts, then read and corrected by hand. The `generator` meta tag, the footer note, `humans.txt` and the comment in each page's `<head>` say so quietly, in the places people actually look. The footer word is a link to `/colophon/`, so it opens on a tap as well as a hover, and `/colophon/` gives the full account of what came from a prompt and what was corrected.
