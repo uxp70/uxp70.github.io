@@ -529,6 +529,7 @@ h2 {
 .card--zombs { --accent: #8bdc4f; }
 .card--nebula { --accent: #a78bfa; }
 .card--ios { --accent: #b8c0d0; }
+.card--chess { --accent: #e3c06b; }
 
 .card__head {
   display: flex;

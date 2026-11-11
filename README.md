@@ -1,13 +1,13 @@
 # uxp70.github.io
 
-The site at <https://uxp70.github.io/> — one page linking to every public project, with a short explanation of each, plus a dedicated page per project under `/p/`.
+The site at <https://uxp70.github.io/> — one page linking to every project, public or still in progress, with a short explanation of each, plus a dedicated page per project under `/p/`.
 
 Plain HTML, CSS and a little JavaScript. No build step, no dependencies, no trackers, no network calls after load.
 
 ## Pages
 
 ```
-index.html            the landing page: hero, filters, seven project cards, about
+index.html            the landing page: hero, filters, eight project cards, about
 p/index.html          index of the project notes
 p/<project>/index.html   one detail page per project
 colophon/index.html   how the site was made, from prompts to commits
@@ -31,6 +31,7 @@ Detail pages live at:
 | ZombsClone.io | `/p/zombsclone-io/` |
 | Nebula Strike | `/p/nebula-strike/` |
 | iOSeverything | `/p/ios-everything/` |
+| Chess | `/p/chess/` |
 
 The paths deliberately avoid `/slipstream/`, `/pixel-playground/` and so on: those are already served by each project's own GitHub Pages site, and a directory with the same name in this repository would collide with them. `/p/` is namespaced, so the live demos keep working.
 
@@ -55,6 +56,7 @@ The user site lives in this repo, named `uxp70.github.io`, and Pages serves it f
 2. Bump the counts on the filter buttons, in the `filter-status` default text and in the hero `stats` list.
 3. Add `p/<slug>/index.html` using any existing detail page as the template: set `proj--<accent>` on `<body>`, the `<title>`, description and hero, then update the prev/next links in the pages either side.
 4. Add the new page to the list in `p/index.html`.
+5. If a project is not published yet, mark the card with `pill--soon` and link only to its detail page — no Play button and no guessed URL. The Chess entry is the example.
 
 Live links point at absolute `https://uxp70.github.io/<repo>/` URLs so they keep working from a local server too, while the internal links (`/`, `/p/…`, `/styles.css`) resolve at the domain root.
 
