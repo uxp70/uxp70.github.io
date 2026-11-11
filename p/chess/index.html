@@ -3,15 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Chess — an unpublished project in progress — uxp70</title>
-<meta name="description" content="Chess is a chess site in progress. Nothing is published yet — no URL, no demo and no source link. This page is the placeholder for when there is something to play.">
+<title>ChessHub — free chess: bots, friends and game review — uxp70</title>
+<meta name="description" content="ChessHub is a free, static chess site: six rated bots that run in the browser, peer-to-peer games with a friend over a short code, and a chess.com-style game review with an eval bar and best-move arrows.">
 <meta name="theme-color" content="#070809">
 <meta name="generator" content="vibecoded — prompted by a human, typed by a model">
 <link rel="author" href="/humans.txt">
 <!-- Vibecoded: the markup and prose were generated from prompts, then read and corrected by hand. -->
 <meta property="og:type" content="article">
-<meta property="og:title" content="Chess — uxp70">
-<meta property="og:description" content="A chess site in progress. Not published yet — this page is the placeholder for when it is.">
+<meta property="og:title" content="ChessHub — uxp70">
+<meta property="og:description" content="Six rated bots, peer-to-peer friend games and a local game review — one static folder, no account.">
 <meta property="og:url" content="https://uxp70.github.io/p/chess/">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="/styles.css">
@@ -25,8 +25,8 @@
     <a class="logo" href="/" aria-label="uxp70, home">uxp70<span class="logo__cursor" aria-hidden="true"></span></a>
     <nav class="nav" aria-label="Main">
       <a href="/">All projects</a>
-      <a href="/#projects">Projects</a>
-      <a class="nav__ext" href="https://github.com/uxp70">GitHub <span aria-hidden="true">↗</span></a>
+      <a href="https://uxp70.github.io/chesshub/">Play <span aria-hidden="true">↗</span></a>
+      <a class="nav__ext" href="https://github.com/uxp70/chesshub">Source <span aria-hidden="true">↗</span></a>
     </nav>
   </div>
 </header>
@@ -35,14 +35,18 @@
   <section class="p-hero">
     <div class="wrap">
       <a class="p-back" href="/"><span aria-hidden="true">←</span> All projects</a>
-      <p class="p-kicker">08 · Game · In progress</p>
-      <h1 class="p-title">Chess</h1>
-      <p class="p-lede">A chess site, still in progress. It is not published anywhere yet — there is no board to open and no source to read, so this page says that plainly and waits.</p>
+      <p class="p-kicker">08 · Game · Playable</p>
+      <h1 class="p-title">ChessHub</h1>
+      <p class="p-lede">Free chess with no account and no server: six rated bots that run in your browser, a peer-to-peer game with a friend over a short code, and a game review that grades your moves and draws the engine's best line.</p>
+      <div class="p-actions">
+        <a class="btn btn--primary" href="https://uxp70.github.io/chesshub/">Play in the browser <span aria-hidden="true">↗</span></a>
+        <a class="btn" href="https://github.com/uxp70/chesshub">Read the source</a>
+      </div>
       <dl class="p-meta">
         <div><dt>Kind</dt><dd>Chess</dd></div>
-        <div><dt>Status</dt><dd>Not published</dd></div>
-        <div><dt>Link</dt><dd>None yet</dd></div>
-        <div><dt>Next</dt><dd>First public build</dd></div>
+        <div><dt>Bots</dt><dd>6 · 300–1850</dd></div>
+        <div><dt>Online</dt><dd>P2P, no account</dd></div>
+        <div><dt>Build</dt><dd>Static, no build</dd></div>
       </dl>
     </div>
   </section>
@@ -51,12 +55,20 @@
     <div class="wrap p-grid">
       <div class="p-side">
         <span class="p-side__num">01</span>
-        <h2>Where it stands</h2>
-        <p class="p-side__note">No URL, no demo, no repository link — the card is marked rather than linked.</p>
+        <h2>Six bots, one ladder</h2>
+        <p class="p-side__note">300 to 1850, calibrated to feel like the Chess.com bots rather than to be a FIDE rating.</p>
       </div>
       <div class="p-body">
-        <p>The project exists and is being worked on. What does not exist is anything public to point at: no deployed page, no repository, no board to open. Publishing a placeholder URL or a "coming soon" screen dressed up as the real thing would only waste a click.</p>
-        <p class="p-callout">When the first public version is live, this page gets the same treatment as the others: what the chess side actually does, how it is built, and a Play button.</p>
+        <p>Every bot is an alpha-beta search over chess.js, with the difficulty dialled by three things rather than one: how deep it looks, how much random noise it adds to its evaluation, and how often it deliberately plays a random legal move.</p>
+        <dl class="p-rows">
+          <div><dt>Rookie Robbie · 300</dt><dd>One ply, a wide ±260cp evaluation swing, and 28% of moves picked at random — hopeful rather than calculating.</dd></div>
+          <div><dt>Casual Carla · 600</dt><dd>One ply, 16% random moves, still happy to hang a piece.</dd></div>
+          <div><dt>Club Karl · 900</dt><dd>Two ply, 10% blunders. Punishes the obvious mistake.</dd></div>
+          <div><dt>Expert Emma · 1200</dt><dd>Two ply with quiescence, 5% blunders, much less noise.</dd></div>
+          <div><dt>Master Milo · 1500</dt><dd>Three ply with quiescence, 3% blunders, and a positional game.</dd></div>
+          <div><dt>Grandmaster Gus · 1850</dt><dd>Three ply with quiescence, 1.5% blunders, tie-break noise down to ±8cp.</dd></div>
+        </dl>
+        <p>Quiescence search is what makes the top of the ladder feel different: without it, a shallow engine stops counting in the middle of a trade and calmly hangs a piece. The whole search runs in the tab, so there is no network round trip between your move and the reply.</p>
       </div>
     </div>
   </section>
@@ -65,12 +77,16 @@
     <div class="wrap p-grid">
       <div class="p-side">
         <span class="p-side__num">02</span>
-        <h2>What happens here next</h2>
-        <p class="p-side__note">The usual project note, once there is something to describe.</p>
+        <h2>A friend, a code, no account</h2>
+        <p class="p-side__note">PeerJS does the matchmaking; the game itself travels directly between the two browsers.</p>
       </div>
       <div class="p-body">
-        <p>The home page card stays marked <strong>Not public</strong> until the first deploy. After that it gains a live link, and this page is rewritten with a lede, a few sections on how the interesting parts work, and the build details — the same shape as every other note here.</p>
-        <p>Nothing is claimed in the meantime. There is no feature list, no engine, no rules and no online mode, because none of that has been published and checked.</p>
+        <p>Choose Online, create a game code, send it to a friend, and they join with it. There is no login, no lobby and no database of games — the two browsers connect over WebRTC through a public PeerJS broker, and every move goes straight down that data channel.</p>
+        <ul class="p-list">
+          <li><strong>Host or join.</strong> The host creates a code; the guest enters it. Either side can disconnect cleanly instead of leaving a ghost game behind.</li>
+          <li><strong>Both players have to be there.</strong> It is a live peer-to-peer game, not correspondence chess: there is no game history to come back to.</li>
+          <li><strong>Your colour is yours.</strong> In an online game the board only accepts moves for your side, so you cannot move your opponent's pieces by accident.</li>
+        </ul>
       </div>
     </div>
   </section>
@@ -79,12 +95,35 @@
     <div class="wrap p-grid">
       <div class="p-side">
         <span class="p-side__num">03</span>
-        <h2>Why list it at all</h2>
-        <p class="p-side__note">A record of what is being built, not only what is finished.</p>
+        <h2>Review, not just a hint</h2>
+        <p class="p-side__note">The same local engine that plays the bots grades the game you just finished.</p>
       </div>
       <div class="p-body">
-        <p>Everything else here is public, or about to be. An unpublished entry is the same honesty in reverse: a note that the work exists, without pretending there is something to play. It is filtered under Games, so removing it later is a one-line change.</p>
-        <p>If you came looking for a chess board, there is not one yet. The rest of the work is on the <a href="/">home page</a>, and the <a href="/p/">project notes</a> go further into each one.</p>
+        <p>The Analyse tab runs a Game Review at depth 3 over every move, compares what you played with what the engine preferred, and turns the difference into an accuracy figure and a move classification. An evaluation bar tracks the position as you step through the game, and a green arrow draws the engine's best line when you ask for it.</p>
+        <ul class="p-list">
+          <li><strong>Step through it.</strong> The transport controls and the arrow keys walk the finished game while the eval bar and best line follow the position on the board.</li>
+          <li><strong>Bring your own game.</strong> Load a PGN or a FEN from somewhere else, or copy the current game out as PGN.</li>
+          <li><strong>Hint, mid-game.</strong> The Hint button runs the same depth-3 search without leaving the board.</li>
+        </ul>
+        <p class="p-callout">This is a browser engine, not Stockfish. Three ply with quiescence is enough to catch the blunders that decide a club game; it is not an annotation of a grandmaster game.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="p-section">
+    <div class="wrap p-grid">
+      <div class="p-side">
+        <span class="p-side__num">04</span>
+        <h2>A folder, not a stack</h2>
+        <p class="p-side__note">Two CDN scripts, one HTML file, one stylesheet and 539 lines of app code.</p>
+      </div>
+      <div class="p-body">
+        <p>ChessHub is plain HTML, CSS and JavaScript. chess.js supplies the rules and legal move generation; PeerJS supplies the WebRTC connection. There is no framework, no bundler and no backend — GitHub Pages serves the repository root, and the whole game is the same files you can read.</p>
+        <pre><code>git clone https://github.com/uxp70/chesshub.git
+cd chesshub
+python3 -m http.server 8000
+# open http://localhost:8000</code></pre>
+        <p>Opening <code>index.html</code> directly works too, though the peer-to-peer mode is happier over HTTP.</p>
       </div>
     </div>
   </section>

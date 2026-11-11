@@ -35,14 +35,14 @@
     <div class="wrap">
       <p class="eyebrow"><span class="eyebrow__dot" aria-hidden="true"></span>Independent developer · uxp70</p>
       <h1>Games and tools<br>that run in the tab.</h1>
-      <p class="lede">I build small, self-contained software for the open web: neon arena shooters, an arcade of tiny games, a raw-file host — plus the odd iOS utility. Everything below is public, or about to be. Play it, read it, fork it.</p>
+      <p class="lede">I build small, self-contained software for the open web: neon arena shooters, an arcade of tiny games, a raw-file host — plus the odd iOS utility. Everything below is public. Play it, read it, fork it.</p>
       <div class="hero__actions">
         <a class="btn btn--primary" href="#projects">Browse the projects</a>
         <a class="btn" href="https://github.com/uxp70">Source on GitHub <span aria-hidden="true">↗</span></a>
       </div>
       <ul class="stats">
         <li><strong>8</strong><span>projects listed</span></li>
-        <li><strong>5</strong><span>live in the browser</span></li>
+        <li><strong>6</strong><span>live in the browser</span></li>
         <li><strong>0</strong><span>server bills</span></li>
       </ul>
     </div>
@@ -53,9 +53,9 @@
       <div class="section-head">
         <div>
           <p class="eyebrow">01 — Projects</p>
-          <h2>Seven shipped, one on the way.</h2>
+          <h2>Eight things I've shipped</h2>
         </div>
-        <p class="section-head__note">Five play right in the browser, two are for iOS, and one is still being built.</p>
+        <p class="section-head__note">Six play right in the browser. Two are for iOS.</p>
       </div>
 
       <div class="filters" role="group" aria-label="Filter projects by kind">
@@ -251,24 +251,27 @@
           </div>
         </article>
 
-        <!-- 08 · Chess -->
+        <!-- 08 · ChessHub -->
         <article class="card card--chess" data-cat="games">
           <div class="card__head">
             <span class="num">08</span>
             <div class="pills">
               <span class="pill">Game</span>
-              <span class="pill pill--soon">Not public</span>
+              <span class="pill pill--live"><span class="pill__dot" aria-hidden="true"></span>Playable</span>
             </div>
           </div>
-          <h3 class="card__name"><a href="/p/chess/">Chess</a></h3>
-          <p class="card__tagline">A chess site in progress. Nothing is published yet, so there is no board to open — this card is the placeholder for the day it goes live.</p>
+          <h3 class="card__name"><a href="https://uxp70.github.io/chesshub/">ChessHub</a></h3>
+          <p class="card__tagline">Free chess with six rated bots, peer-to-peer games with a friend, and a chess.com-style game review — all static, with no account.</p>
           <ul class="points">
-            <li>No URL, repository or demo exists yet, and none is guessed here: the entry is marked rather than linked.</li>
-            <li>When the first public version lands, the card gains a Play button and this note is replaced with what the site actually does.</li>
+            <li>Six bots from 300 to 1850, tuned by search depth, evaluation noise and how often they blunder. The strongest looks three ply with quiescence.</li>
+            <li>Play a friend over a short code: PeerJS connects the two browsers directly, so there is no lobby, login or game database.</li>
+            <li>Game Review grades every move with the local engine, with an eval bar, best-move arrows, PGN and FEN import, and a hint button.</li>
           </ul>
           <div class="card__foot">
-            <ul class="chips"><li>Chess</li><li>In progress</li></ul>
+            <ul class="chips"><li>JavaScript</li><li>chess.js</li><li>PeerJS</li><li>No build</li></ul>
             <div class="actions">
+              <a class="btn btn--primary" href="https://uxp70.github.io/chesshub/">Play <span aria-hidden="true">↗</span></a>
+              <a class="btn" href="https://github.com/uxp70/chesshub">Source</a>
               <a class="btn" href="/p/chess/">Details</a>
             </div>
           </div>
@@ -290,7 +293,7 @@
         <dl class="principles">
           <div>
             <dt>Static first</dt>
-            <dd>If it can ship as files on GitHub Pages, it does. Five of the eight run with no server at all.</dd>
+            <dd>If it can ship as files on GitHub Pages, it does. Six of the eight run with no server at all.</dd>
           </div>
           <div>
             <dt>Local-first data</dt>
